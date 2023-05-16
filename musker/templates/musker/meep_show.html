@@ -1,0 +1,45 @@
+{% extends 'musker/base.html' %}
+{% load static %}
+{% block title %}share profile{% endblock title %}
+{% block content %}
+<h1>Share Page page</h1>
+<br/>
+<div class="countainer text-center">
+    <div class="row">
+        <div class="col-8">
+            
+            <div class="alert alert-dark" role="alert">
+                <div class='countainer'>
+                    <div class='row'>
+                        <div class='col-1'>
+                            {% if meep.user.profile.profile_pic %}
+                                <img src="{{ meep.user.profile.profile_pic.url }}" class="rounded-circle" width=70 height=70 alt="Profile Picture">
+                            {% else %}
+                                <img src="{% static 'images/default_pic.jpg' %}" class="rounded mx-auto d-block" width=70 height=70 alt="default Picture">
+                            {% endif %}
+                        </div>
+                        <div class='col -10'>
+                            {{ meep.body }}<br/>
+                            <small>
+                                ( {{ meep.created_at }} ) By
+                                @{{ meep.user.username }} --- {{ meep.CountLikesMeep }} Likes <br/>
+                                <!-- create button like -->
+                                {% if user in meep.likes.all %}
+                                    <a href="{% url 'meep-likes' meep.id %}"> Unlikes </a>
+                                {% else %}
+                                    <a href="{% url 'meep-likes' meep.id %}"> likes </a>
+                                {% endif %}
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            </div>          
+
+
+        </div>
+        <div class="col-4">
+         
+        </div>
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,24 @@
+{% extends 'musker/base.html' %}
+{% block title %}login{% endblock title %}
+{% block content %}
+<br/>
+{% if user.is_authenticated %}
+<h1> You're Already Logged In ! </h1>
+{% else %}
+<div class="countainer text-center">
+    <h1>this is a login page</h1>
+    
+    <form method="POST">
+        {% csrf_token %}
+        <div class="mb-3">
+            <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" name="username">
+        </div>
+        <div class="mb-3">
+            <input type="password" class="form-control"placeholder="password" aria-label="password" id="exampleInputPassword1" name="password">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    
+</div>
+{% endif %}
+{% endblock content %}

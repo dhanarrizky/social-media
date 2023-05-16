@@ -1,0 +1,21 @@
+{% extends 'musker/base.html' %}
+{% block title %}update register{% endblock title %}
+{% block content %}
+
+
+<h1>hallo this is Update User page</h1>
+<br/>
+<div class="countainer text-center">
+    <br/>
+    <form method="POST" action=''  enctype='multipart/form-data'>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <br/>
+        {{ forms.as_p }}
+        <br/>
+        <button type="submit" class="btn btn-secondary">
+            Update</button>
+    </form>
+</div>
+{% endblock content %}
+
